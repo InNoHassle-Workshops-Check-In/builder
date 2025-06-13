@@ -23,10 +23,13 @@ jobs:
         with:
           version: 8
 
+      - name: Switch to frontend directory
+        run: cd frontend
+  
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build Vue App
+      - name: Build React App
         run: pnpm run build
 
       - name: Deploy to Server via SCP
@@ -36,7 +39,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          source: "dist/*"
+          source: "frontend/dist/*"
           strip_components: 1
           target: ${{ secrets.FRONTEND_REPO_PATH }}
 
