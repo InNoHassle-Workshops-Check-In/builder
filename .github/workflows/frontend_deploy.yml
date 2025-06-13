@@ -42,8 +42,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          source: "frontend/dist/"
-          strip_components: 1
+          source: "frontend/dist/*"
+          strip_components: 2
           target: ${{ secrets.FRONTEND_REPO_PATH }}
 
       - name: Restart Nginx
