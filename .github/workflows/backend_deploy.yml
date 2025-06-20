@@ -12,6 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+          submodules: 'recursive'  # Critical for submodules
+          token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy to server
       uses: appleboy/ssh-action@v1.0.0
